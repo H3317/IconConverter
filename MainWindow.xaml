@@ -1,0 +1,58 @@
+﻿<Window x:Class="Icon转换器.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Icon转换器"
+        mc:Ignorable="d"
+        Title="Icon转换器(jpg jpeg png bmp)" Height="150" SizeToContent="Width" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="ico.ico">
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button Width="90" Margin="2" BorderBrush="Gray" BorderThickness="1" Background="Transparent"
+                Click="Button_Click" AllowDrop="True" Drop="Button_Drop" DragEnter="Button_DragEnter">
+            <Grid>
+                <TextBlock Text="将图片拖&#13;拽到此处&#13;或点击选择" TextAlignment="Center"/>
+                <Image x:Name="img1"/>
+            </Grid>
+        </Button>
+        <StackPanel Orientation="Horizontal" Grid.Column="1">
+            <StackPanel.Resources>
+                <Style TargetType="RadioButton">
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="FontSize" Value="16"/>
+                    <Setter Property="Margin" Value="4,0,0,0"/>
+                    <Setter Property="Padding" Value="0"/>
+                </Style>
+            </StackPanel.Resources>
+            <UniformGrid Rows="4">
+                <RadioButton GroupName="A" x:Name="rb0" Content="原始" IsChecked="True" Checked="rb0_Checked"/>
+                <RadioButton GroupName="A" x:Name="rb5" Content="50%" Checked="rb0_Checked"/>
+                <RadioButton GroupName="A" x:Name="rb6" Content="25%" Checked="rb0_Checked"/>
+                <RadioButton GroupName="A" x:Name="rb7" Content="10%" Checked="rb0_Checked"/>
+            </UniformGrid>
+            <UniformGrid Rows="4" Margin="5 0">
+                <RadioButton GroupName="A" x:Name="rb4" Content="256*256" Checked="rb0_Checked"/>
+                <RadioButton GroupName="A" x:Name="rb3" Content="128*128" Checked="rb0_Checked"/>
+                <RadioButton GroupName="A" x:Name="rb2" Content="64*64" Checked="rb0_Checked"/>
+                <RadioButton GroupName="A" x:Name="rb1" Content="32*32" Checked="rb0_Checked"/>
+            </UniformGrid>
+            <UniformGrid Rows="4" Margin="5 0">
+                <RadioButton GroupName="A" x:Name="rb8" Content="宽256" Checked="rb0_Checked"/>
+                <RadioButton GroupName="A" x:Name="rb9" Content="宽128" Checked="rb0_Checked"/>
+                <RadioButton GroupName="A" x:Name="rb10" Content="宽64" Checked="rb0_Checked"/>
+                <RadioButton GroupName="A" x:Name="rb11" Content="宽32" Checked="rb0_Checked"/>
+            </UniformGrid>
+            <UniformGrid Rows="4" Margin="5 0">
+                <RadioButton GroupName="A" x:Name="rb12" Content="高256" Checked="rb0_Checked"/>
+                <RadioButton GroupName="A" x:Name="rb13" Content="高128" Checked="rb0_Checked"/>
+                <RadioButton GroupName="A" x:Name="rb14" Content="高64" Checked="rb0_Checked"/>
+                <RadioButton GroupName="A" x:Name="rb15" Content="高32" Checked="rb0_Checked"/>
+            </UniformGrid>
+        </StackPanel>
+    </Grid>
+</Window>
