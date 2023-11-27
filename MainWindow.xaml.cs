@@ -206,19 +206,21 @@ namespace Icon转换器
             if (rect.Width == 0)
                 rect = new Rectangle(0, 0, pic.Width, pic.Height);
             // 创建最适尺寸的图像
-            Bitmap IconBitmap = new Bitmap(rect.Width, rect.Height);
-            Graphics g = Graphics.FromImage(IconBitmap);
+            var IconBitmap = new Bitmap(rect.Width, rect.Height);
+            var g = Graphics.FromImage(IconBitmap);
             g.DrawImage(pic, rect, new Rectangle(0, 0, pic.Width, pic.Height), GraphicsUnit.Pixel);
             g.Dispose();
 
             // 以位图的形式保存到内存流中
-            MemoryStream memoryStream = new MemoryStream();
+            var memoryStream = new MemoryStream();
             IconBitmap.Save(memoryStream, ImageFormat.Bmp);
 
             // 从位图创建Icon属性
-            IconInfo iconInfo1 = new IconInfo();
-            iconInfo1.Width = (ushort)rect.Width;
-            iconInfo1.Height = (ushort)rect.Height;
+            var iconInfo1 = new IconInfo
+            {
+                Width = (ushort)rect.Width,
+                Height = (ushort)rect.Height
+            };
 
             // 获取图形数据
             memoryStream.Position = 14;
@@ -260,9 +262,9 @@ namespace Icon转换器
         public static void SaveToIcon(Image pic, Rectangle rect, string PathName)
         {
             // 获取Icon信息
-            IconInfo iconInfo = CreatIconInfo(pic, rect);
+            var iconInfo = CreatIconInfo(pic, rect);
             // 创建文件输出流，写入文件，生成Icon图像
-            using (FileStream stream = new FileStream(PathName, FileMode.Create))
+            using (var stream = new FileStream(PathName, FileMode.Create))
             {
                 // 写入Icon固定部分
                 ushort Reserved = 0;
